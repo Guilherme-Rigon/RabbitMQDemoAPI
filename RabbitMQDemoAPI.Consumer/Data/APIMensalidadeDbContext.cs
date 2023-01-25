@@ -14,5 +14,10 @@ namespace RabbitMQDemoAPI.Consumer.Data
         }
 
         public DbSet<Mensalidade> Mensalidades { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Mensalidade>().Property(x => x.Valor).HasColumnType("DECIMAL(18,2)");
+        }
     }
 }
